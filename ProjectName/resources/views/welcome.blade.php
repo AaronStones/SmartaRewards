@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+
+<!--
+    //name: Aaron Stones
+    //task: Smarta Rewards Interview
+    //date: 09/08/2020
+-->
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
