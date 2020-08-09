@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
+<!-- Style auth -->
+<link rel="stylesheet" type="text/css" href="{{ url('/css/authorisation.css') }}" />
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
