@@ -46,7 +46,7 @@
                 <h1>People</h1>
                 <div class='w3-container'>
                 <?php 
-                        $results = DB::select('select * from people');
+                        $results = DB::table('people')->where('1', '=', 1)->get();
                         for($i =0; $i<sizeof($results); $i++){
                             echo "<div class='w3-card-4' style='width:100%'>
                             <header class='w3-container w3-light-grey'>
@@ -85,7 +85,8 @@ function insertCompanies(){
     DB::insert('insert into companies (name, uuid) values (?, ?)', [$_GET['name'], $_GET['uuid']]); //enter a new company
 }
 function insertPeople(){
-    $result = DB::select('select * from people where email = :id LIMIT 1', ['id' => $_GET['email']]); //check if an email exists
+    $result = DB::table('people')->where('email', $_GET['email'])->get();
+    //$result = DB::select('select * from people where email = :id LIMIT 1', ['id' => $_GET['email']]); //check if an email exists
     if ($result == null ){
         DB::insert('insert into people (name, email) values (?, ?)', [$_GET['name'], $_GET['email']]);//email is unique enter into database
     }
