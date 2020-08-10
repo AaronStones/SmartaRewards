@@ -46,7 +46,7 @@
                 <h1>People</h1>
                 <div class='w3-container'>
                 <?php 
-                        $results = DB::table('people')->where('1', '=', 1)->get();
+                        $results = DB::select('select * from people');
                         for($i =0; $i<sizeof($results); $i++){
                             echo "<div class='w3-card-4' style='width:100%'>
                             <header class='w3-container w3-light-grey'>
