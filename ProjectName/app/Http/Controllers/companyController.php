@@ -51,7 +51,7 @@ class companyController extends Controller
             'uuid'     =>  $request->get('uuid')
         ]);
         $company->save();
-        return redirect()->route('/home')->with('success', 'New Company Added');
+        return redirect()->route('home')->with('success', 'New Company Added');
     }
 
     /**
