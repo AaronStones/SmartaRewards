@@ -28,3 +28,6 @@ Route::get('/people', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('company','companyController@store');
+Route::get('person','peopleController@store');
