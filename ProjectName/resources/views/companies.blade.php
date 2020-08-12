@@ -7,7 +7,23 @@
     //task: Smarta Rewards Interview
     //date: 09/08/2020
 -->
+        <div class="row">
+        <div class="col-md-12">
 
+        @if(count($errors) > 0)
+        <div class="alert alert-danger">
+        <ul>
+        @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+        @endforeach
+        </ul>
+        </div>
+        @endif
+        @if(\Session::has('success'))
+        <div class="alert alert-success">
+        <p>{{ \Session::get('success') }}</p>
+        </div>
+        @endif
         <form method="post">
             {{csrf_field()}}
             <div class="form-group">
@@ -29,10 +45,11 @@
                 <td>UUID</td>
             </tr>
         @foreach ($users as $user)
+
             <tr>
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->company }}</td>
-                <td>{{ $user->uuid }}</td>
+                <td><a href="http://ec2-3-129-209-209.us-east-2.compute.amazonaws.com/company?u={{ $user->uuid }}">{{ $user->uuid }}</a></td>
             </tr>
         @endforeach
         </table> </br>

@@ -18,7 +18,7 @@ class peopleController extends Controller
     public function index()
     {
         $people = DB::select('select * from people');
-        return view('people',['users'=>$users]);
+        return view('people',['users'=>$people]);
     }
 
     /**
@@ -49,7 +49,7 @@ class peopleController extends Controller
             'email'     =>  $request->get('email')
         ]);
         $person->save();
-        return redirect()->route('people')->with('success', 'New Customer Added');
+        return redirect()->route('home')->with('success', 'New Customer Added');
     }
 
     /**

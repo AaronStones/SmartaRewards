@@ -25,13 +25,24 @@ Route::get('/people', function () {
     return view('people');
 });
 
+Route::get('/company', function () {
+    return view('company');
+});
+
+Route::get('/person', function () {
+    return view('person');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::resource('companies', 'companyController');
+Route::resource('company', 'companyController');
+Route::resource('people', 'peopleController');
 
 
 Route::get('companies', 'companyController@index');
+Route::get('people', 'peopleController@index');
 

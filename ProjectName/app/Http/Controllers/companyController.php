@@ -30,7 +30,7 @@ class companyController extends Controller
      */
     public function create()
     {
-        return view('companies');
+        return view('home');
     }
 
     /**

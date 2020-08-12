@@ -28,7 +28,13 @@
         @endif
     </div>
     <div class="col-md-12">
-    </div>
+    <a href="http://ec2-3-129-209-209.us-east-2.compute.amazonaws.com/companies">
+        <button>Visit Companies</button>
+    </a>     
+    <a href="http://ec2-3-129-209-209.us-east-2.compute.amazonaws.com/people">
+        <button>Visit People</button>
+    </a>    
+</div>
 
 
 
