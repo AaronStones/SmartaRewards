@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Company;
 use DB;
+use Illuminate\Support\Str;
 use App\Http\Requests;
 
 
@@ -42,16 +43,17 @@ class companyController extends Controller
      */
     public function store(Request $request)
     {
+        $uuid = Str::uuid()->toString();
         $this->validate($request, [
             'company'    =>  'required',
             'uuid'    =>  'required',
         ]);
         $company = new Company([
             'company'    =>  $request->get('company'),
-            'uuid'     =>  $request->get('uuid')
+            'uuid'    =>  $uuid
         ]);
         $company->save();
-        return redirect()->route('home')->with('success', 'New Company Added');
+        return redirect()->route('company')->with('success', 'New Company Added');
     }
 
     /**

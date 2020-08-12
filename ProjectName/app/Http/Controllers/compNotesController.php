@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Company;
+use DB;
+
 class compNotesController extends Controller
 {
     /**
@@ -13,9 +15,11 @@ class compNotesController extends Controller
      */
     public function index()
     {
-        $values = Company::find(1)->mycmp;
+        //$user = DB::table('companies')->where('uuid', $_GET['uuid'])->first();
+        //var_dump($user);
+        $values = DB::select('select * from company_notes');
         return view('company',['users'=>$values]);
-    }
+    }//char 36 or 32
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +28,7 @@ class compNotesController extends Controller
      */
     public function create()
     {
-        //
+        return view('home');
     }
 
     /**
@@ -35,7 +39,17 @@ class compNotesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'note'    =>  'required'
+        ]);
+
+        $note = new compNotesController([
+            'note'    =>  $request->get('company'),
+            'company_id'    =>  $request->get('id')
+        ]);
+        
+        $note->save();
+        return redirect()->route('home')->with('success', 'New Note Added');
     }
 
     /**

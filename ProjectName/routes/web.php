@@ -42,6 +42,8 @@ Route::resource('companies', 'companyController');
 Route::resource('company', 'companyController');
 Route::resource('people', 'peopleController');
 
+Route::resource('company', 'compNotesController');
+
 Route::get('companies', 'companyController@index');
 Route::get('people', 'peopleController@index');
 Route::get('company', 'compNotesController@index');

@@ -7,7 +7,6 @@
     //task: Smarta Rewards Interview
     //date: 09/08/2020
 -->
-
 <div class="row">
         <div class="col-md-12">
         @if(count($errors) > 0)
@@ -24,10 +23,13 @@
         <p>{{ \Session::get('success') }}</p>
         </div>
         @endif
-        <form method="post">
+        <form method="post" action="{{url('home')}}">
             {{csrf_field()}}
             <div class="form-group">
-                <input type="text" name="company" class="form-control" placeholder="Enter Your Note" />
+                <input type="text" name="note" class="form-control" placeholder="Enter Your Note" />
+            </div>
+            <div class="form-group">
+                <input type="text" name="id" class="form-control" placeholder="Enter the Company ID" />
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" />
@@ -39,16 +41,17 @@
             <tr>
                 <td>Id</td>
                 <td>Note</td>
-                <td>Company ID</td>
             </tr>
         @foreach ($users as $user)
 
             <tr>
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->note }}</td>
-                <td><?=$_GET['uuid']?></td>
             </tr>
         @endforeach
         </table> </br>
-
+<?php
+   $user = DB::table('companies')->where('uuid', $_GET['uuid'])->first();
+   echo "<p style='color:black;'>" . var_dump($user) . "</p>";
+?>
 @endsection

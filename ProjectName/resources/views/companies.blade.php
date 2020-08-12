@@ -28,10 +28,7 @@
             {{csrf_field()}}
             <div class="form-group">
                 <input type="text" name="company" class="form-control" placeholder="Enter Company Name" />
-            </div>
-            <div class="form-group">
-                <input type="hidden" name="uuid" class="form-control" value="<?=uniqid(), PHP_EOL;?>"/>
-            </div>
+            </div>            
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" />
             </div>
