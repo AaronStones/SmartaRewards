@@ -12,4 +12,8 @@ class Person extends Model
         'email_address' => 'required|email|unique:users'
     ];
 
+    protected $hidden = [
+        'created_at', 'updated_at',
+    ];
+
 }

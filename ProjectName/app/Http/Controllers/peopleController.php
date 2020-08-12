@@ -17,9 +17,8 @@ class peopleController extends Controller
      */
     public function index()
     {
-        $comp = DB::table('companies')->get();
-
-        return view('home', ['company' => $comp]);
+        $people = DB::select('select * from people');
+        return view('people',['users'=>$users]);
     }
 
     /**
@@ -43,14 +42,14 @@ class peopleController extends Controller
         $this->validate($request, [
             'name'    =>  'required',
             'email'     =>  'required',
-            'email'     =>  Rule::unique('users')
+            'email' => 'required|unique:people'
         ]);
         $person = new Person([
             'name'    =>  $request->get('name'),
             'email'     =>  $request->get('email')
         ]);
         $person->save();
-        return redirect()->route('home')->with('success', 'New Customer Added');
+        return redirect()->route('people')->with('success', 'New Customer Added');
     }
 
     /**

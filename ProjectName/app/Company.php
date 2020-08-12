@@ -8,8 +8,8 @@ class Company extends Model
 {
     protected $fillable = ['company', 'uuid'];
 
-    protected $rules = [
-        'email_address' => 'required|company|unique:users'
+    protected $hidden = [
+        'created_at', 'updated_at',
     ];
 }
 

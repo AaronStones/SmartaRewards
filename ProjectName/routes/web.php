@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/company', function () {
-    return view('company');
+Route::get('/companies', function () {
+    return view('companies');
 });
 
 Route::get('/people', function () {
@@ -29,8 +29,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('company', 'companyController');
 
-Route::resource('person', 'peopleController');
+Route::resource('companies', 'companyController');
 
-Route::get('person','peopleController@store');
+
+Route::get('companies', 'companyController@index');
+

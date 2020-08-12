@@ -18,9 +18,9 @@ class companyController extends Controller
      */
     public function index()
     {
-        $company = Company::all();
+        $users = DB::select('select * from companies');
 
-        return view('home', compact('contacts'));
+        return view('companies',['users'=>$users]);
     }
 
     /**
@@ -30,7 +30,7 @@ class companyController extends Controller
      */
     public function create()
     {
-        return view('home');
+        return view('companies');
     }
 
     /**
@@ -44,7 +44,6 @@ class companyController extends Controller
         $this->validate($request, [
             'company'    =>  'required',
             'uuid'    =>  'required',
-            'company'     =>  Rule::unique('users')
         ]);
         $company = new Company([
             'company'    =>  $request->get('company'),
