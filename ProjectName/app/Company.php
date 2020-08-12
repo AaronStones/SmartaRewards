@@ -11,6 +11,11 @@ class Company extends Model
     protected $hidden = [
         'created_at', 'updated_at',
     ];
+
+    function mycmp()
+    {
+        return $this->hasMany('App\companyNotes');
+    }
 }
 
 ?>

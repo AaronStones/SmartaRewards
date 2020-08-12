@@ -24,7 +24,7 @@
         <p>{{ \Session::get('success') }}</p>
         </div>
         @endif
-        <form method="post">
+        <form method="get" action="{{url ('company')}}">
             {{csrf_field()}}
             <div class="form-group">
                 <input type="text" name="company" class="form-control" placeholder="Enter Company Name" />
@@ -49,10 +49,12 @@
             <tr>
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->company }}</td>
-                <td><a href="http://ec2-3-129-209-209.us-east-2.compute.amazonaws.com/company?u={{ $user->uuid }}">{{ $user->uuid }}</a></td>
+                <td>{{ $user->uuid }}</td>
             </tr>
         @endforeach
         </table> </br>
+
+
     </div>
 </div>
 @endsection

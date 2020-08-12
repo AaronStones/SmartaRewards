@@ -42,7 +42,7 @@ Route::resource('companies', 'companyController');
 Route::resource('company', 'companyController');
 Route::resource('people', 'peopleController');
 
-
 Route::get('companies', 'companyController@index');
 Route::get('people', 'peopleController@index');
+Route::get('company', 'compNotesController@index');
 

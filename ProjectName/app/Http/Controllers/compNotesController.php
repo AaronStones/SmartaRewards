@@ -3,13 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use App\Company;
-use DB;
-use App\Http\Requests;
-
-
-class companyController extends Controller
+class compNotesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,11 +13,9 @@ class companyController extends Controller
      */
     public function index()
     {
-        $users = DB::select('select * from companies');
-
-        return view('companies',['users'=>$users]);
+        $values = Company::find(1)->mycmp;
+        return view('company',['users'=>$values]);
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -31,7 +24,7 @@ class companyController extends Controller
      */
     public function create()
     {
-        return view('home');
+        //
     }
 
     /**
@@ -42,16 +35,7 @@ class companyController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'company'    =>  'required',
-            'uuid'    =>  'required',
-        ]);
-        $company = new Company([
-            'company'    =>  $request->get('company'),
-            'uuid'     =>  $request->get('uuid')
-        ]);
-        $company->save();
-        return redirect()->route('home')->with('success', 'New Company Added');
+        //
     }
 
     /**

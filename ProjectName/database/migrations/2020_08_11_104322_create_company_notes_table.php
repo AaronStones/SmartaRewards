@@ -16,7 +16,7 @@ class CreateCompanyNotesTable extends Migration
         Schema::create('company_notes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('note'); //varchar(255)
-            $table->smallInteger('compID'); 
+            $table->smallInteger('company_id'); 
             $table->timestamps();
 
         });

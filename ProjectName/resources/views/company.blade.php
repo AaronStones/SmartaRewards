@@ -27,10 +27,7 @@
         <form method="post">
             {{csrf_field()}}
             <div class="form-group">
-                <input type="text" name="company" class="form-control" placeholder="Enter Company Name" />
-            </div>
-            <div class="form-group">
-                <input type="hidden" name="uuid" class="form-control" value="<?=uniqid(), PHP_EOL;?>"/>
+                <input type="text" name="company" class="form-control" placeholder="Enter Your Note" />
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" />
@@ -41,15 +38,15 @@
         <table style="color:black;" border = "1">
             <tr>
                 <td>Id</td>
-                <td>Name</td>
-                <td>UUID</td>
+                <td>Note</td>
+                <td>Company ID</td>
             </tr>
         @foreach ($users as $user)
 
             <tr>
                 <td>{{ $user->id }}</td>
-                <td>{{ $user->company }}</td>
-                <td><a href="http://ec2-3-129-209-209.us-east-2.compute.amazonaws.com/company?u={{ $user->uuid }}">{{ $user->uuid }}</a></td>
+                <td>{{ $user->note }}</td>
+                <td><?=$_GET['uuid']?></td>
             </tr>
         @endforeach
         </table> </br>
